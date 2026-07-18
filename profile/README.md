@@ -1,12 +1,5 @@
-## Hi there 👋
+# Daily Forge Systems
 
-<!--
+A private software studio building a portfolio of independent products, backed by a shared internal toolkit.
 
-**Here are some ideas to get you started:**
-
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+Our repositories are private. This organization's `.github` repository holds our public profile and the organization-wide defaults (issue templates, pull request template, code owners) shared across our repos.
