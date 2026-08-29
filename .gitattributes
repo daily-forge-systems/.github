@@ -1,0 +1,36 @@
+# Normalise to LF in the repository and keep LF in the working tree.
+#
+# Without this, core.autocrlf checks files out with CRLF on Windows while CI
+# reads them as LF, so local checks disagree with CI in two ways this workspace
+# has actually been bitten by:
+#
+#   - compliance.py hashes raw bytes, so every synced .compliance-kit/ file
+#     reports KIT_FILE_HASH_MISMATCH locally while validating cleanly on Linux.
+#   - a formatter whose default is LF (prettier, and dart format where CI pairs
+#     it with `git diff --exit-code`) flags every file instead of the handful
+#     that are genuinely misformatted, hiding the real ones in the noise.
+#
+# quorvyn_web has carried this rule since it was created; this brings the rest
+# of the workspace in line.
+* text=auto eol=lf
+
+# Binary assets must never be line-ending-converted.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.onnx binary
+*.zip binary
+*.jar binary
+*.keystore binary
+*.exe binary
+*.dll binary
+*.so binary
+*.dylib binary
