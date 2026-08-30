@@ -1,0 +1,68 @@
+name: Technische Aufgabe
+description: Arbeit ohne unmittelbar sichtbaren Nutzerwert — Refactoring, Infrastruktur, Abhängigkeiten, Aufräumen.
+title: "Aufgabe: "
+labels: ["aufgabe"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Für Arbeit, die niemand in der Oberfläche sieht, aber jemand tun muss.
+        Der Unterschied zum Feature ist nicht die Größe, sondern die Frage, wem
+        sie nützt: hier dem System, dort den Nutzenden.
+
+  - type: dropdown
+    id: art
+    attributes:
+      label: Art
+      options:
+        - Refactoring — Struktur ändern, Verhalten nicht
+        - Infrastruktur, CI oder Werkzeuge
+        - Abhängigkeiten — anheben, ersetzen, entfernen
+        - Aufräumen — Totes entfernen, Duplikate zusammenführen
+        - Architektur — Port, Schnittstelle oder Schichtgrenze
+        - Sonstiges
+    validations:
+      required: true
+
+  - type: textarea
+    id: was
+    attributes:
+      label: Was ist zu tun?
+      description: Konkret genug, dass jemand anderes damit anfangen könnte.
+    validations:
+      required: true
+
+  - type: textarea
+    id: warum
+    attributes:
+      label: Warum, und warum jetzt?
+      description: >
+        Welcher Schmerz besteht heute, oder welche Arbeit wird dadurch möglich?
+        Ohne diese Antwort ist es eine Aufräumidee, kein Vorhaben. Wenn die
+        Änderung Verhalten bewusst nicht ändert, hier ausdrücklich sagen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: fertig
+    attributes:
+      label: Fertig, wenn
+      description: >
+        Woran ist das Ergebnis erkennbar? Bevorzugt an etwas Ausführbarem — ein
+        grüner Job, eine bestandene Prüfung, eine gemessene Zahl.
+      placeholder: |
+        - [ ] …
+        - [ ] Linter und Tests der berührten Pakete ohne Befund
+    validations:
+      required: true
+
+  - type: textarea
+    id: risiko
+    attributes:
+      label: Risiko und Rücknahme
+      description: >
+        Was kann dabei stillschweigend kaputtgehen, und wie käme man zurück?
+        Bei einer Änderung an `forge_common` gehört hierher, welche der bis zu
+        sieben Apps betroffen sind — siehe `docs/workflows/forge-common-api-change.md`.
+    validations:
+      required: false

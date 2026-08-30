@@ -1,0 +1,18 @@
+# Formlose Issues sind abgeschaltet: jedes Anliegen geht durch eines der
+# Formulare. Das ist Absicht - eine Vorlage, die man umgehen kann, wird umgehen,
+# und die Felder existieren, weil ihr Fehlen schon Arbeit gekostet hat.
+#
+# Passt kein Formular, ist das ein Befund über die Formulare. Dann wird das hier
+# angepasst, statt die Vorgabe zu umgehen.
+blank_issues_enabled: false
+
+contact_links:
+  - name: Sicherheitslücke melden
+    url: mailto:security@quorvyn.de
+    about: >
+      Vertraulich per E-Mail, niemals als Issue - auch nicht in einem privaten
+      Repository. Siehe SECURITY.md.
+
+  - name: Frage zur Bedienung oder Einrichtung
+    url: mailto:support@quorvyn.de
+    about: Kein Fehler und kein Vorhaben, sondern eine Frage.
