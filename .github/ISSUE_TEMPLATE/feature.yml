@@ -1,7 +1,7 @@
 name: Feature / User Story
 description: Neue Funktion oder Erweiterung aus Sicht derer, die sie nutzen.
 title: "Feature: "
-labels: ["enhancement"]
+labels: ["type:feature"]
 body:
   - type: markdown
     attributes:

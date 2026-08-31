@@ -1,7 +1,7 @@
 name: Spike / Untersuchung
 description: Eine offene Frage klären, bevor Aufwand in eine Umsetzung fließt.
 title: "Spike: "
-labels: ["spike"]
+labels: ["type:spike"]
 body:
   - type: markdown
     attributes:

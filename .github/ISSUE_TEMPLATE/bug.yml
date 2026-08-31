@@ -1,7 +1,7 @@
 name: Fehler
 description: Etwas verhält sich anders als erwartet oder ist kaputt.
-title: "Fehler: "
-labels: ["bug"]
+title: "Bug: "
+labels: ["type:bug"]
 body:
   - type: markdown
     attributes:

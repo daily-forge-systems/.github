@@ -1,7 +1,7 @@
 name: Technische Aufgabe
 description: Arbeit ohne unmittelbar sichtbaren Nutzerwert — Refactoring, Infrastruktur, Abhängigkeiten, Aufräumen.
-title: "Aufgabe: "
-labels: ["aufgabe"]
+title: "Task: "
+labels: ["type:task"]
 body:
   - type: markdown
     attributes:
