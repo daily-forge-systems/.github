@@ -1,0 +1,12 @@
+
+
+# Editor state. One person works on these repositories, so a launch
+# configuration meant for sharing has nobody to share with and drifts per
+# machine instead. Three of fifteen repositories tracked theirs until
+# 2026-09-02 while the rest did not, and that inconsistency is what this rule
+# removes. Anything worth keeping belongs in a workflow doc, where it is read
+# rather than silently applied. Note that the Flutter repositories carry the
+# same path further up as a comment, left inactive by `flutter create`; the
+# effective rule is this one.
+.vscode/
+.idea/
