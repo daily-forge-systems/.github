@@ -1,0 +1,23 @@
+version: 2
+
+updates:
+  # Only the Actions ecosystem. This repository has no package manifest of any
+  # kind, so there is nothing else to watch, and the two workflows here pin
+  # their actions by SHA like every other repository in the workspace.
+  - package-ecosystem: "github-actions"
+    labels: ["type:task", "area:ci"]
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: "chore(deps)"
+    open-pull-requests-limit: 5
+    groups:
+      github-actions-minor-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      github-actions-major:
+        patterns: ["*"]
+        update-types: ["major"]
