@@ -1,0 +1,94 @@
+name: Security Scan
+
+# Weekly + on PRs, deliberately not on every push - the same runner-cost
+# lesson that led to removing compliance.yml/security-supply-chain.yml on
+# 2026-08-06 (see workspace-root AGENTS.md's "Branching convention").
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  pull_request:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  # A superseded run is cancelled instead of being paid for to the end.
+  # github.ref rather than github.head_ref, so push and pull_request form
+  # separate groups and a pull request run does not cancel the branch run.
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    # A hang detector rather than a runtime budget. The scan takes well
+    # under a minute; without a cap a wedged run holds a runner for the
+    # platform's six-hour ceiling.
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      # The gitleaks-action wrapper Action requires a paid license for
+      # org-owned private repos beyond one, and stops working on
+      # GitHub-hosted runners entirely once Node 20 is removed
+      # (2026-09-16). Installing the MIT-licensed CLI binary directly
+      # avoids both - checksum-verified, version bumped by hand
+      # periodically (not Dependabot-tracked, same as semgrep's pinned
+      # image digest below).
+      - name: Install gitleaks
+        run: |
+          set -euo pipefail
+          curl -sSLO https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz
+          echo "551f6fc83ea457d62a0d98237cbad105af8d557003051f41f3e7ca7b3f2470eb  gitleaks_8.30.1_linux_x64.tar.gz" | sha256sum -c -
+          tar -xzf gitleaks_8.30.1_linux_x64.tar.gz gitleaks
+          sudo mv gitleaks /usr/local/bin/
+
+      - name: Scan for secrets
+        run: gitleaks detect --source . --redact --verbose
+
+  semgrep:
+    runs-on: ubuntu-latest
+    # Higher than gitleaks because --config=auto downloads its rule set
+    # first, and that is the step that can stall.
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    container:
+      image: semgrep/semgrep@sha256:155f999d01d02b33aa5a8db9186eb20dcd0154ce1a0ac6fce8d80674d0ace235 # 1.174.0
+    steps:
+      # fetch-depth: 0 so the pull-request step below can build a baseline
+      # worktree from the PR's merge base.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      # Two mutually exclusive steps, by event.
+      #
+      # On a pull request, only findings the PR *itself introduces* gate it.
+      # A whole-repo scan would block an unrelated change on pre-existing
+      # findings - and, worse, on rules the registry added since the last
+      # run: `p/default` evolves server-side, so a whole-repo gate can turn
+      # red with no code change at all. That is exactly what happened on
+      # 2026-08-24, when a newly published uv-cooldown rule blocked a
+      # Dependabot dependency bump. Diff-scoping keeps the gate meaningful
+      # without making it a lottery.
+      - name: Static analysis (semgrep, findings this PR introduces)
+        if: github.event_name == 'pull_request'
+        run: >-
+          semgrep scan --config=p/default --metrics=off --error
+          --baseline-commit ${{ github.event.pull_request.base.sha }}
+
+      # The scheduled sweep scans everything, and is informational: some
+      # repos carry a known backlog whose fix needs its own dedicated pass
+      # (see this repo's AGENTS.md where that applies), and a permanently red
+      # weekly badge trains you to ignore it. Read the run, don't rely on its
+      # colour.
+      - name: Static analysis (semgrep, full sweep)
+        if: github.event_name != 'pull_request'
+        continue-on-error: true
+        run: semgrep scan --config=p/default --metrics=off --error

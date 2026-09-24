@@ -1,0 +1,106 @@
+name: Fehler
+description: Etwas verhält sich anders als erwartet oder ist kaputt.
+title: "Bug: "
+labels: ["type:bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Keine Sicherheitslücken hier melden.** Die gehören vertraulich an
+        security@quorvyn.de, nicht in ein Issue — auch nicht in einem privaten
+        Repository, weil ein Issue später mitwandern kann.
+
+        Keine echten Kunden-, Patienten-, Zahlungs- oder Zugangsdaten in
+        Beschreibung, Logs oder Screenshots. Werte vorher maskieren.
+
+  - type: textarea
+    id: erwartet
+    attributes:
+      label: Erwartetes Verhalten
+      description: Was hätte passieren sollen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: tatsaechlich
+    attributes:
+      label: Tatsächliches Verhalten
+      description: >
+        Was passiert stattdessen? Fehlermeldungen wörtlich zitieren statt
+        sinngemäß wiedergeben — die genaue Formulierung ist oft der Hinweis.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduktion
+    attributes:
+      label: Schritte zur Reproduktion
+      description: >
+        Nummeriert, ab einem definierten Ausgangszustand. Wenn der Fehler nicht
+        zuverlässig auftritt, hier festhalten wie oft von wie vielen Versuchen —
+        eine bekannte Sporadik ist ein Befund, keine Randnotiz.
+      placeholder: |
+        1. Anwendung starten
+        2. …
+        3. …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: schweregrad
+    attributes:
+      label: Schweregrad
+      description: >
+        „Blockierend" heißt: die Arbeit oder ein Release steht still. Nicht
+        vergeben, weil etwas ärgerlich ist.
+      options:
+        - Blockierend — nichts geht weiter
+        - Hoch — zentrale Funktion unbrauchbar, Umweg existiert
+        - Mittel — stört, ist aber umgehbar
+        - Niedrig — kosmetisch oder Randfall
+    validations:
+      required: true
+
+  - type: dropdown
+    id: plattform
+    attributes:
+      label: Betroffene Plattform
+      multiple: true
+      options:
+        - Windows
+        - Linux
+        - Web
+        - Serverseitig
+        - Unklar
+    validations:
+      required: true
+
+  - type: input
+    id: stand
+    attributes:
+      label: Stand
+      description: Commit-SHA, Tag oder Versionsnummer, auf dem der Fehler auftrat.
+      placeholder: "z. B. a0d5806 oder v1.4.2"
+    validations:
+      required: true
+
+  - type: textarea
+    id: belege
+    attributes:
+      label: Logs, Stacktrace, CI-Lauf
+      description: >
+        Wörtliche Ausgabe statt Zusammenfassung. Bei einem CI-Fehlschlag die
+        Run-URL. Wird als Code gesetzt, Backticks sind nicht nötig.
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: analyse
+    attributes:
+      label: Bisherige Eingrenzung
+      description: >
+        Was wurde schon ausgeschlossen, und wodurch? Eine Vermutung ohne Beleg
+        bitte als Vermutung kennzeichnen.
+    validations:
+      required: false

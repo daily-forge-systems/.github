@@ -1,2 +1,8 @@
 # Default owner for everything in this repo.
 * @BenBotsch
+
+# CI and community-health defaults applied org-wide
+/.github/ @BenBotsch
+
+# The organisation profile page
+/profile/ @BenBotsch

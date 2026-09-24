@@ -1,0 +1,67 @@
+name: Spike / Untersuchung
+description: Eine offene Frage klären, bevor Aufwand in eine Umsetzung fließt.
+title: "Spike: "
+labels: ["type:spike"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ein Spike liefert **Wissen, keinen Produktivcode**. Er endet mit einer
+        Antwort und einer Empfehlung — Code, der dabei entsteht, ist Wegwerfware
+        und darf nicht stillschweigend zur Umsetzung werden.
+
+        Das Zeitbudget ist der Kern: es ist erreicht, wenn es aufgebraucht ist,
+        auch ohne Antwort. Dann ist „wir wissen es weiterhin nicht, und das hat
+        uns X gekostet" das Ergebnis — und ein gültiges.
+
+  - type: textarea
+    id: frage
+    attributes:
+      label: Zu beantwortende Frage
+      description: >
+        Eine Frage, nicht mehrere, und so gestellt, dass die Antwort eine
+        Entscheidung ermöglicht.
+      placeholder: "Trägt … für unseren Fall, oder brauchen wir …?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: entscheidung
+    attributes:
+      label: Welche Entscheidung hängt daran?
+      description: >
+        Was wird nach der Antwort anders gemacht? Hängt keine Entscheidung
+        daran, ist es Neugier — legitim, aber kein Vorhaben.
+    validations:
+      required: true
+
+  - type: input
+    id: budget
+    attributes:
+      label: Zeitbudget
+      description: Feste Obergrenze, keine Schätzung.
+      placeholder: "z. B. 4 Stunden, oder 1 Tag"
+    validations:
+      required: true
+
+  - type: textarea
+    id: ergebnis
+    attributes:
+      label: Erwartetes Ergebnis
+      description: >
+        Woran ist der Spike abgeschlossen erkennbar — eine Notiz, ein Vergleich
+        mit Messwerten, ein Prototyp, der weggeworfen wird?
+      placeholder: |
+        - [ ] Empfehlung mit Begründung, hier als Kommentar festgehalten
+        - [ ] Verworfene Alternativen benannt, mit dem Grund
+        - [ ] Folge-Issue angelegt, falls umgesetzt werden soll
+    validations:
+      required: true
+
+  - type: textarea
+    id: ansaetze
+    attributes:
+      label: Zu prüfende Ansätze
+      description: Was von vornherein verglichen werden soll.
+    validations:
+      required: false

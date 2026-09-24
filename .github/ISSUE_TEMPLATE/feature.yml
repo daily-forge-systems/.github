@@ -1,0 +1,86 @@
+name: Feature / User Story
+description: Neue Funktion oder Erweiterung aus Sicht derer, die sie nutzen.
+title: "Feature: "
+labels: ["type:feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Eine gute Story ist klein genug, um in einem Zug fertig zu werden, und
+        beschreibt einen Nutzen — nicht eine Umsetzung. Steht hier bereits die
+        Lösung statt des Bedarfs, ist es meist eine technische Aufgabe.
+
+  - type: textarea
+    id: story
+    attributes:
+      label: Nutzersicht
+      description: >
+        Wer will was, und wozu? Der „damit"-Teil ist der wichtigste: er
+        entscheidet später, ob die Umsetzung das Richtige getroffen hat.
+      placeholder: |
+        Als … möchte ich …, damit …
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem und heutiger Zustand
+      description: >
+        Was ist ohne diese Funktion mühsam, fehleranfällig oder unmöglich? Wie
+        wird heute beholfen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: akzeptanz
+    attributes:
+      label: Akzeptanzkriterien
+      description: >
+        Prüfbare Bedingungen, nicht Absichten. Jede Zeile muss mit ja oder nein
+        beantwortbar sein — „soll performant sein" ist keins, „Liste mit 10.000
+        Einträgen scrollt ohne sichtbares Ruckeln" schon. Randfälle gehören
+        dazu: leere Eingabe, fehlender Wert, Fehlerpfad.
+      placeholder: |
+        - [ ] Gegeben …, wenn …, dann …
+        - [ ] Bei leerer Eingabe erscheint … statt eines Fehlers
+        - [ ] …
+    validations:
+      required: true
+
+  - type: textarea
+    id: nicht-umfang
+    attributes:
+      label: Ausdrücklich nicht Teil davon
+      description: >
+        Was naheliegt, hier aber bewusst nicht mitgemacht wird. Das verhindert
+        den stillen Umfangszuwachs zuverlässiger als jede Schätzung.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: prioritaet
+    attributes:
+      label: Priorität
+      options:
+        - Muss — ohne dies ist das Vorhaben unvollständig
+        - Soll — wichtig, aber verschiebbar
+        - Kann — Verbesserung ohne Dringlichkeit
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: Berührt diese Änderung Compliance-relevante Bereiche?
+      description: >
+        Trifft eines zu, ist `docs/workflows/compliance-change.md` Teil der
+        Umsetzung und die `compliance/*.json`-Profile werden im selben Vorgang
+        mitgeführt — nicht nachträglich.
+      options:
+        - label: Verarbeitet oder speichert personenbezogene Daten
+        - label: Ändert Aufbewahrung, Löschung oder Datenweitergabe
+        - label: Fordert neue Berechtigungen oder Netzwerkzugriffe an
+        - label: Bindet einen externen Anbieter oder eine neue Abhängigkeit ein
+        - label: Nutzt ein KI-Modell oder trifft eine automatisierte Entscheidung
+        - label: Nichts davon
