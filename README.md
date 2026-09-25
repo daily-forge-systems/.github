@@ -32,10 +32,11 @@ the public policy lives at [quorvyn.de/sicherheit](https://quorvyn.de/sicherheit
 
 ## How a change goes live
 
-Work happens on `develop`. GitHub renders the profile page and reads the defaults from the default
-branch `main`, so a change becomes visible only after a release pull request from `develop` to
-`main`, following `docs/workflows/release.md` in the workspace repository. Commits follow
-Conventional Commits.
+Work happens on `develop`, which is also the default branch of this repository. GitHub renders the
+profile page and reads the defaults from the default branch, so a push to `develop` is visible at
+once and needs the same explicit approval as any other push. `main` receives releases through a
+pull request from `develop`, following `docs/workflows/release.md` in the workspace repository.
+Commits follow Conventional Commits.
 
 Outside contributions are not expected, because there is nothing here to build or run. Questions
 about Quorvyn go to [contact@quorvyn.de](mailto:contact@quorvyn.de), and security reports go
