@@ -4,11 +4,11 @@
 
 _Desktop applications for work where the material itself is the sensitive part_
 
-[Website](https://quorvyn.de) · [Products](https://quorvyn.de/produkte/) · [About](https://quorvyn.de/ueber/) · [Security](https://quorvyn.de/sicherheit/) · [Contact](https://quorvyn.de/kontakt/)
+[Website](https://quorvyn.de/en/) · [Products](https://quorvyn.de/en/products/) · [About](https://quorvyn.de/en/about/) · [Security](https://quorvyn.de/en/security/) · [Contact](https://quorvyn.de/en/contact/)
 
 </div>
 
-Quorvyn builds desktop applications in Berlin for Windows and Linux. They are made for material that nobody uploads casually, such as your own documents, your own training data and your own measurement series. This organisation, `daily-forge-systems`, holds the source code of those applications and the shared toolkit they are built on. The website at [quorvyn.de](https://quorvyn.de) is in German for now, and its [imprint](https://quorvyn.de/rechtliches/impressum/) states who stands behind Quorvyn.
+Quorvyn builds desktop applications in Berlin for Windows and Linux. They are made for material that nobody uploads casually, such as your own documents, your own training data and your own measurement series. This organisation, `daily-forge-systems`, holds the source code of those applications and the shared toolkit they are built on. The website at [quorvyn.de](https://quorvyn.de/en/) is in English and German, and its [imprint](https://quorvyn.de/en/legal/imprint/) states who stands behind Quorvyn.
 
 ## Why the applications run on your machine
 
@@ -22,9 +22,10 @@ None of the applications can be obtained yet. Each product page on the website s
 
 | Application | What it does | Status |
 | --- | --- | --- |
-| [Docyra](https://quorvyn.de/produkte/docyra/) | Turns photos and scans into ordered documents. It finds the edges, straightens the page, reads the text and files it searchably, with the archive encrypted on your disk. | In development |
-| [GuideFlow](https://quorvyn.de/produkte/guideflow/) | Takes you in eight steps from a folder of pictures to a checked image model, without the machine learning vocabulary. Training and evaluation run on your own machine. | In development |
-| [Prismio](https://quorvyn.de/produkte/prismio/) | Evaluates metallographic micrographs, component photographs and CT volumes in one application and keeps every step from the raw data to the released report traceable. | Concept |
+| [Quorvyn Docyra](https://quorvyn.de/en/products/docyra/) | Turns photos and scans into ordered documents. It finds the edges, straightens the page, reads the text and files it searchably, with the archive encrypted on your disk. | In development |
+| [Quorvyn Train](https://quorvyn.de/en/products/train/) | Takes you in eight steps from a folder of pictures to a checked image model, without the machine learning vocabulary. Training and evaluation run on your own machine. | In development |
+| [Quorvyn News](https://quorvyn.de/en/products/news/) | Groups financial news into events and sets them beside comparable cases from the past, with the uncertainty stated. It is a research instrument, not investment advice. Unlike the other applications, it evaluates the news on a server, and only your watchlists and thresholds stay on your machine. | Concept |
+| [Quorvyn Imaging](https://quorvyn.de/en/products/imaging/) | Evaluates metallographic micrographs, component photographs and CT volumes in one application and keeps every step from the raw data to the released report traceable. | Concept |
 
 ## How we work
 
@@ -40,6 +41,6 @@ The product repositories are private, so there is nothing here to clone, install
 
 | Topic | Where |
 | --- | --- |
-| General questions and press | [contact@quorvyn.de](mailto:contact@quorvyn.de) or the [contact page](https://quorvyn.de/kontakt/) |
+| General questions and press | [contact@quorvyn.de](mailto:contact@quorvyn.de) or the [contact page](https://quorvyn.de/en/contact/) |
 | Using or setting up an application | [support@quorvyn.de](mailto:support@quorvyn.de) |
-| Security vulnerabilities | [security@quorvyn.de](mailto:security@quorvyn.de), confidentially and never as a public issue. The [security page](https://quorvyn.de/sicherheit/) and [security.txt](https://quorvyn.de/.well-known/security.txt) describe the process. |
+| Security vulnerabilities | [security@quorvyn.de](mailto:security@quorvyn.de), confidentially and never as a public issue. The [security page](https://quorvyn.de/en/security/) and [security.txt](https://quorvyn.de/.well-known/security.txt) describe the process. |
