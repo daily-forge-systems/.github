@@ -21,3 +21,10 @@ updates:
       github-actions-major:
         patterns: ["*"]
         update-types: ["major"]
+      # Security updates are grouped too. Without this group Dependabot opens
+      # one pull request per vulnerable package, each touching the same
+      # lockfile as the monthly group, so every merge left the others
+      # conflicting. See docs/workflows/dependabot-ops.md.
+      github-actions-security:
+        applies-to: security-updates
+        patterns: ["*"]
